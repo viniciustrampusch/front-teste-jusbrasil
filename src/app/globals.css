@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #e4ebf1;
+  --ink: #13293d;
+  --card: #f7fafb;
+  --stamp: #c44536;
+  --route: #1e4d6b;
+  --line: #c9d4de;
+  --muted: #3f5363;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-card: var(--card);
+  --color-stamp: var(--stamp);
+  --color-route: var(--route);
+  --color-line: var(--line);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-atkinson), sans-serif;
+  --font-mono: var(--font-plex), ui-monospace, monospace;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.ticket {
+  position: relative;
+  margin-top: 10px;
+  background: var(--card);
+  border: 1px solid var(--line);
+}
+
+.ticket::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  right: 0;
+  left: 0;
+  height: 18px;
+  background-image: radial-gradient(circle, var(--paper) 7px, transparent 7.5px);
+  background-repeat: repeat-x;
+  background-position: center;
+  background-size: 22px 18px;
+  pointer-events: none;
+}
+
+.ticket-rule {
+  border-top: 1px dashed var(--line);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--route);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .punch-fill {
+    transform-origin: bottom;
+    animation: punch 420ms ease-out;
+  }
+}
+
+@keyframes punch {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
